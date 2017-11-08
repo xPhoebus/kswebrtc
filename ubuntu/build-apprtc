@@ -1,3 +1,5 @@
+
+mkdir $OUTPUT/apprtc
 cd temp
 if [ ! -x apprtc ]; then
     get-apprtc  #获取 apprtc 代码
@@ -7,4 +9,12 @@ rm -rf $ROOT/temp/apprtc/out
 npm install
 grunt build
 cp -r $ROOT/temp/apprtc/out/* $OUTPUT/apprtc/
-cp $ROOT/configs/apprtc/* $OUTPUT/apprtc/app_engine/
+cp $PROOT/configs/apprtc/* $OUTPUT/apprtc/app_engine/
+
+pushd $OUTPUT/apprtc/app_engine
+echo HOST_NAME='"'$APPRTC_HOST'"' > apprtclocal.py
+ip=`ifconfig|grep "inet "|grep -v "127.0.0.1"|awk -F 'inet ' 'NR==1 {print $2}'|awk '{print $1}'|sed "s/addr://g"`
+echo HOST_IP='"'$ip'"' >> apprtclocal.py
+echo WEBSOCKET_PORT='"'7089'"' >> apprtclocal.py
+
+

@@ -1,0 +1,1 @@
+$OUTPUT/bin/collidermain -port=8089 -tls=false # -room-server=http://192.168.57.12:8080

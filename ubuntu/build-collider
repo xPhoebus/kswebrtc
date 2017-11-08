@@ -1,0 +1,25 @@
+pushd temp
+
+go version
+if [ $? -ne 0 ]; then
+    echo Install golang, need root permission ...
+    sudo apt-get install golang
+fi
+
+if [ ! -x collider ]; then
+    mkdir collider
+fi
+
+pushd collider
+export GOPATH=$PWD
+
+if [ ! -x src ]; then
+    mkdir src
+    cp -r $ROOT/temp/apprtc/src/collider/* src/
+    cp -r $PROOT/supports/collider/go/* src/
+fi
+
+cd src
+go get collidermain
+cp $ROOT/temp/collider/bin/collidermain $OUTPUT/bin/
+

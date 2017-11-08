@@ -1,7 +1,12 @@
 #!/bin/bash
+sudo systemctl stop firewalld.service
+export APPRTC_HOST="centos.apprtc.com"
 export ROOT=$PWD
 export OUTPUT=$PWD/output
-export PATH=$PATH:$PWD/bin:$ROOT/supports/gae/ubuntu
+pushd ..
+export PROOT=$PWD
+export PATH=$PATH:$PWD/bin:$PWD/supports/gae/ubuntu
+popd
 
 if [ ! -x temp ]; then
     mkdir temp

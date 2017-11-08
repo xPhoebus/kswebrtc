@@ -1,0 +1,58 @@
+if [ ! -x temp ]; then
+    mkdir temp
+fi
+pushd temp
+
+export OUTPUT=$OUTPUT/turnserver
+export CFLAGS=-I$OUTPUT/include
+export LDFLAGS=-L$OUTPUT/lib
+
+#openssl 不能使用较低版本，否则  macos 上会出现64位版本的问题
+if [ ! -f openssl-1.1.0f.tar.gz ]; then
+    wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz
+fi
+
+tar -xf openssl-1.1.0f.tar.gz
+pushd openssl-1.1.0f
+#./Configure darwin64-x86_64-cc && 
+make clean
+./config --prefix=$OUTPUT && make && make install
+if [ $? -ne 0 ]; then
+    echo Build openssl failed
+    exit -1
+fi
+
+popd
+
+#cp $ROOT/supports/libevent-2.1.8-stable.tar.gz .
+if [ ! -f libevent-2.1.8-stable.tar.gz ]; then
+    wget https://raw.githubusercontent.com/xPhoebus/supports/master/libevent-2.1.8-stable.tar.gz
+fi
+
+if [ ! -f libevent-2.1.8-stable.tar.gz ]; then
+    wget https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
+fi
+
+tar -xf libevent-2.1.8-stable.tar.gz
+pushd libevent-2.1.8-stable
+make clean
+./configure --prefix=$OUTPUT && make && make install
+if [ $? -ne 0 ]; then
+    echo Build libevent failed
+    exit -2
+fi
+
+popd
+
+if [ ! -f turnserver-4.5.0.6.tar.gz ]; then
+    wget http://turnserver.open-sys.org/downloads/v4.5.0.6/turnserver-4.5.0.6.tar.gz
+fi
+
+tar -xf turnserver-4.5.0.6.tar.gz
+pushd turnserver-4.5.0.6
+make clean
+./configure --prefix=$OUTPUT && make && make install
+if [ $? -ne 0 ]; then
+    echo Build turnserver failed
+    exit -2
+fi
