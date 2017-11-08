@@ -1,0 +1,10 @@
+cd temp
+if [ ! -x apprtc ]; then
+    get-apprtc  #获取 apprtc 代码
+fi
+cd apprtc
+rm -rf $ROOT/temp/apprtc/out
+npm install
+grunt build
+cp -r $ROOT/temp/apprtc/out/* $OUTPUT/apprtc/
+cp $ROOT/configs/apprtc/* $OUTPUT/apprtc/app_engine/
