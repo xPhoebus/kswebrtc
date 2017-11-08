@@ -1,0 +1,15 @@
+#!/bin/bash
+export ROOT=$PWD
+export OUTPUT=$PWD/output
+export PATH=$PATH:$PWD/bin:$ROOT/supports/gae/ubuntu
+
+if [ ! -x temp ]; then
+    mkdir temp
+fi
+
+if [ ! -x output ]; then
+    mkdir -p output/bin
+    mkdir -p output/apprtc
+fi
+
+bash
