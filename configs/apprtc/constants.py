@@ -45,8 +45,8 @@ TURN_BASE_URL = 'https://' + apprtclocal.HOST_NAME + ':1443'
 TURN_URL_TEMPLATE = '%s/turn?username=%s&key=%s'
 CEOD_KEY = '4080218913'
 
-ICE_SERVER_BASE_URL = 'https://networktraversal.googleapis.com'
-ICE_SERVER_URL_TEMPLATE = '%s/v1alpha/iceconfig?key=%s'
+ICE_SERVER_BASE_URL = 'https://' + apprtclocal.HOST_NAME + ':1443'
+ICE_SERVER_URL_TEMPLATE = '%s/iceconfig?key=%s'
 ICE_SERVER_API_KEY = os.environ.get('ICE_SERVER_API_KEY')
 
 CALLSTATS_PARAMS = {
