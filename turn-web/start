@@ -1,0 +1,2 @@
+#supervisor apps.js
+node apps.js
