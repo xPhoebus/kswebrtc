@@ -26,10 +26,10 @@ router.post('/', function(req, resp) {
 
         var ices = [{
             "urls": [
-                "stun:phoebus.apprtc.com:3478?transport=udp",
-                "stun:phoebus.apprtc.com:3478?transport=tcp",
-                "stun:phoebus.apprtc.com:3479?transport=udp",
-                "stun:phoebus.apprtc.com:3479?transport=tcp"
+                "stun:aws.apprtc.com:3478?transport=udp",
+                "stun:aws.apprtc.com:3478?transport=tcp",
+                "stun:aws.apprtc.com:3479?transport=udp",
+                "stun:aws.apprtc.com:3479?transport=tcp"
             ],
             "username": "phoebus", //可选
             "credential": "123456" //可选

@@ -32,10 +32,10 @@ router.get('/', function(req, resp, next) {
 
         var ices = [{
             "urls": [
-                "turn:phoebus.apprtc.com:3478?transport=udp",
-                "turn:phoebus.apprtc.com:3478?transport=tcp",
-                "turn:phoebus.apprtc.com:3479?transport=udp",
-                "turn:phoebus.apprtc.com:3479?transport=tcp"
+                "turn:aws.apprtc.com:3478?transport=udp",
+                "turn:aws.apprtc.com:3478?transport=tcp",
+                "turn:aws.apprtc.com:3479?transport=udp",
+                "turn:aws.apprtc.com:3479?transport=tcp"
             ],
             "username": "phoebus", //可选
             "credential": "123456" //可选
@@ -46,10 +46,10 @@ router.get('/', function(req, resp, next) {
             password: password,
             ttl: time_to_live,
             "uris": [
-                "turn:phoebus.apprtc.com:3478?transport=udp",
-                "turn:phoebus.apprtc.com:3478?transport=tcp",
-                "turn:phoebus.apprtc.com:3479?transport=udp",
-                "turn:phoebus.apprtc.com:3479?transport=tcp"
+                "turn:aws.apprtc.com:3478?transport=udp",
+                "turn:aws.apprtc.com:3478?transport=tcp",
+                "turn:aws.apprtc.com:3479?transport=udp",
+                "turn:aws.apprtc.com:3479?transport=tcp"
             ],
             "iceServers": ices
         });
