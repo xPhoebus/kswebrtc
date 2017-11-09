@@ -28,6 +28,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('./public'))
 
 app.use('/', require('./routes/index'));
+app.use('/html', require('./routes/index'));
 app.use('/websocket', require('./routes/websocket'));
 app.use('/turn', require('./routes/turn'));
 app.use('/iceconfig', require('./routes/ice'));
